@@ -1,0 +1,237 @@
+* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+}
+
+@font-face {
+        font-family: "Gallery Modern";
+        src: url('../fonts/gallerymodern-webfont.woff2') format('woff2'),
+                url('../fonts/gallerymodern-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+}
+
+/* Firefox */
+.wrapper {
+        /* make scrollbar thin in Firefox and apply colors */
+        scrollbar-width: thin;
+        scrollbar-color: #ffda0a #222222; /* thumb track */
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.wrapper::-webkit-scrollbar {
+        width: 8px;              /* slim width */
+        height: 8px;             /* for horizontal scrollbars */
+}
+
+.wrapper::-webkit-scrollbar-track {
+        background: #222222;
+        border-radius: 999px;
+        margin: 6px;             /* creates a little breathing room */
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #ffda0a 0%, #e6c200 100%);
+        border-radius: 999px;
+        border: 2px solid #222222;            /* thin outline to separate from track */
+        box-shadow: inset 0 0 2px rgba(0,0,0,0.35);
+        min-height: 24px;                     /* keeps the thumb usable on short content */
+}
+
+/* Hover/active state for a nicer feel */
+.wrapper::-webkit-scrollbar-thumb:hover,
+.wrapper::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(180deg, #ffd700 0%, #d9b300 100%);
+        transform: translateZ(0); /* enable GPU for smoother hover on some browsers */
+}
+
+/* Corner (when both scrollbars visible) */
+.wrapper::-webkit-scrollbar-corner {
+        background: #222222;
+}
+
+::selection {
+        background: #ffda0a;
+        color: white;
+}
+
+::-moz-selection {
+        background: #ffda0a;
+        color: white;
+}
+
+body {
+        font-family: "Lato", sans-serif;
+        font-size: 22px;
+        color: #fff;
+        cursor: url("../images/cursors/cursor.png") 0 0, auto;
+}
+
+a:hover,
+button:hover {
+        cursor: pointer;
+}
+
+.galleryfont{
+        font-family: 'Gallery Modern', sans-serif;
+}
+
+.wrapper {
+        height: 100vh;
+        width: 100%;
+        background: url('../images/body-bg.png') no-repeat center center / cover;
+        background-attachment: fixed;
+        padding: 40px 0;
+        overflow: auto;
+}
+
+.card {
+        width: clamp(300px, 90%, 600px);
+        min-height: 100%;
+        background: rgba(255, 255, 255, 0);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(14.9px);
+        -webkit-backdrop-filter: blur(14.9px);
+        border: 1px solid rgba(255, 255, 255, 0.29);
+        margin: 0 auto;
+        overflow: hidden;
+}
+
+.cover-section {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+}
+
+.cover-section img.cover-img {
+        position: absolute;    /* <-- important */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        opacity: 0;
+        filter: blur(10px);
+        transition: opacity 1s ease, filter 1s ease;
+        z-index: 0;            /* images behind overlay/text */
+}
+
+.cover-section img.cover-img.active {
+        opacity: 1;
+        filter: blur(0);
+        z-index: 0;
+}
+
+.cover-section .dark-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0000008c;
+        z-index: 1;
+        pointer-events: none; /* so it doesn't block clicks */
+}
+
+button.share-icon {
+        z-index: 2;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        background: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4.5px);
+        -webkit-backdrop-filter: blur(4.5px);
+        border: 1px solid rgba(255, 255, 255, 0.29);
+        color: #ffda0a;
+        transition: all 0.3s;
+}
+
+button.share-icon:hover {
+        background: #ffffff17;
+        transition: all 0.3s;
+}
+
+.cover-text {
+        z-index: 2;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 0 10px;
+        text-align: center;
+        color: #ffda0a;
+        font-family: monospace;
+        font-size: 0.9em;
+        text-shadow: 0px 0px 6px rgba(0,0,0,0.6);
+}
+
+#typing {
+        border-right: 2px solid #ffda0a;
+}
+
+.profile-img {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border: 4px solid #ffda0a;
+        border-radius: 100%;
+        padding: 4px;
+        margin: -75px auto 0 auto;
+        z-index: 2;
+}
+
+.profile-img-wrap {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        overflow: hidden;
+}
+
+.profile-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+}
+
+.name {
+        width: 90%;
+        margin: 20px auto;
+        text-align: center;
+        text-shadow: 0px 0px 6px rgba(0,0,0,0.6);
+}
+
+.name .username {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+}
+
+.name .username img {
+        width: 20px;
+        margin-left: 10px;
+}
+
+/* .qrcode-wrap {
+        width: 220px;
+        height: 220px;
+        padding: 10px;
+        border: 4px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+} */
