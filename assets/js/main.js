@@ -74,6 +74,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000); // 3s per slide
 });
 
+// Copy link
+document.addEventListener("DOMContentLoaded", () => {
+        const copyBtns = document.querySelectorAll(".btn-copy-link");
+        const popup = document.getElementById("copy-popup");
+
+        if (copyBtns.length) {
+                copyBtns.forEach(btn => {
+                        btn.addEventListener("click", (event) => {
+                                event.preventDefault(); // stop anchor from opening
+                                event.stopPropagation(); // stop bubbling to <a>
+
+                                const link = btn.getAttribute("data-link");
+
+                                if (link) {
+                                        navigator.clipboard.writeText(link)
+                                        .then(() => {
+                                                // Show popup
+                                                popup.classList.add("show");
+                                                setTimeout(() => {
+                                                        popup.classList.remove("show");
+                                                }, 3000); // fade out after 3s
+                                        })
+                                        .catch(err => {
+                                                console.error("Failed to copy:", err);
+                                        });
+                                }
+                        });
+                });
+        }
+});
+
 // QR code generator
 new QRCode(document.getElementById("qrcode"), {
         text: "https://irobbott.github.io",  // put your link or text here

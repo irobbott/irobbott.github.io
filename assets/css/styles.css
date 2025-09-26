@@ -256,6 +256,26 @@ button.share-icon:hover {
         transition: all 0.3s;
 }
 
+/* Popup styles */
+#copy-popup {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 6px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+        font-size: 14px;
+        z-index: 9999;
+}
+#copy-popup.show {
+        opacity: 1;
+}
+
 .links {
         width: 100%;
         padding: 0 20px;
