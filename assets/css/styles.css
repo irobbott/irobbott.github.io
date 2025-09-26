@@ -65,12 +65,12 @@ body {
         font-family: "Lato", sans-serif;
         font-size: 22px;
         color: #fff;
-        cursor: url("../images/cursors/cursor.png") 0 0, auto;
+        cursor: url("../images/cursor.png") 0 0, auto;
 }
 
 a:hover,
 button:hover {
-        cursor: pointer;
+        cursor: url("../images/cursor.png") 0 0, auto;
 }
 
 .galleryfont{
@@ -104,6 +104,7 @@ button:hover {
         height: 250px;
         overflow: hidden;
         position: relative;
+        border-bottom: 2px solid #ffda0a;
 }
 
 .cover-section img.cover-img {
@@ -224,6 +225,24 @@ button.share-icon:hover {
 .name .username img {
         width: 20px;
         margin-left: 10px;
+}
+
+.social-icons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+}
+
+.social-icons a {
+        color: #ffda0a;
+        font-size: 0.8em;
+        transition: all 0.3s;
+}
+
+.social-icons a:hover {
+        transform: scale(1.2);
+        transition: all 0.3s;
 }
 
 /* .qrcode-wrap {
