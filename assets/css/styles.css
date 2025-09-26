@@ -68,6 +68,10 @@ body {
         cursor: url("../images/cursor.png") 0 0, auto;
 }
 
+a {
+        text-decoration: none;
+}
+
 a:hover,
 button:hover {
         cursor: url("../images/cursor.png") 0 0, auto;
@@ -210,7 +214,7 @@ button.share-icon:hover {
 
 .name {
         width: 90%;
-        margin: 20px auto;
+        margin: 5px auto 20px auto;
         text-align: center;
         text-shadow: 0px 0px 6px rgba(0,0,0,0.6);
 }
@@ -225,6 +229,10 @@ button.share-icon:hover {
 .name .username img {
         width: 20px;
         margin-left: 10px;
+}
+
+.full-name {
+        font-size: 0.8em;
 }
 
 .social-icons {
@@ -242,6 +250,93 @@ button.share-icon:hover {
 
 .social-icons a:hover {
         transform: scale(1.2);
+        transition: all 0.3s;
+}
+
+.links {
+        width: 100%;
+        padding: 0 20px;
+        margin: 40px 0 20px 0;
+}
+
+.link-item {
+        width: 100%;
+        margin: 20px 0;
+        list-style: none;
+        display: flex;
+}
+
+.link-item a.btn {
+        width: 100%;
+        height: 65px;
+        background: #ffda0a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #222222;
+        border: 2px solid #222222;
+        border-radius: 25px;
+        font-size: 0.8em;
+        padding: 5px 10px;
+        transition: all 0.3s;
+}
+
+.link-item a.btn:hover {
+        background: #dbbb06;
+        -webkit-box-shadow: 1px 4px 0px 2px #000000; 
+        box-shadow: 1px 4px 0px 2px #000000;
+        transition: all 0.3s;
+}
+
+.link-item a.btn.disabled {
+        background: #7a6800;
+}
+
+.link-item a.btn.disabled .btn-copy-link {
+        visibility: hidden;
+}
+
+.btn-thumbnail {
+        width: 45px;
+        height: 45px;
+        border-radius: 15px;
+        overflow: hidden;
+}
+
+.btn-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+}
+
+.btn-text {
+        text-align: center;
+}
+
+.font-small {
+        font-size: 0.9em;
+}
+
+.font-smaller {
+        font-size: 0.7em;
+}
+
+.btn-copy-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7em;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s;
+}
+
+.btn-copy-link:hover {
+        background: #222;
+        color: #ffda0a;
         transition: all 0.3s;
 }
 
