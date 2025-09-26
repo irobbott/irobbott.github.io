@@ -84,7 +84,7 @@ button:hover {
 .wrapper {
         height: 100vh;
         width: 100%;
-        background: url('../images/body-bg.png') no-repeat center center / cover;
+        background: url('../images/body-bg.jpg') no-repeat center center / cover;
         background-attachment: fixed;
         padding: 40px 0;
         overflow: auto;
@@ -247,7 +247,7 @@ button.share-icon:hover {
 
 .social-icons a {
         color: #ffda0a;
-        font-size: 0.8em;
+        /* font-size: 0.8em; */
         transition: all 0.3s;
 }
 
