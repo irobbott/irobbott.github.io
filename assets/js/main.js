@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000); // 3s per slide
 });
 
-// Copy link
+// Copy link - 1
 document.addEventListener("DOMContentLoaded", () => {
         const copyBtns = document.querySelectorAll(".btn-copy-link");
         const popup = document.getElementById("copy-popup");
@@ -103,6 +103,72 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                 });
         }
+});
+
+// Copy link - 2
+document.addEventListener("DOMContentLoaded", () => {
+        const copyBtns = document.querySelectorAll(".copy-share-link");
+        const popup = document.getElementById("copy-popup");
+
+        if (copyBtns.length) {
+                copyBtns.forEach(btn => {
+                        btn.addEventListener("click", (event) => {
+                                event.preventDefault(); // stop anchor from opening
+                                event.stopPropagation(); // stop bubbling to <a>
+
+                                const link = btn.getAttribute("data-link");
+
+                                if (link) {
+                                        navigator.clipboard.writeText(link)
+                                        .then(() => {
+                                                // Show popup
+                                                popup.classList.add("show");
+                                                setTimeout(() => {
+                                                        popup.classList.remove("show");
+                                                }, 3000); // fade out after 3s
+                                        })
+                                        .catch(err => {
+                                                console.error("Failed to copy:", err);
+                                        });
+                                }
+                        });
+                });
+        }
+});
+
+// Share modal
+document.addEventListener("DOMContentLoaded", () => {
+        const shareBtn = document.querySelector(".share-icon");
+        const shareBlur = document.querySelector(".share-blur");
+        const cancelBtn = document.querySelector(".share-cancel");
+
+        // Open modal
+        shareBtn.addEventListener("click", () => {
+                shareBlur.classList.add("active");
+        });
+
+        // Function to close with transition
+        function closeModal() {
+                shareBlur.style.opacity = "0"; // start fade out
+                shareBlur.querySelector(".share-box").style.transform = "translateY(-20px)";
+
+                // Wait for transition to finish before hiding
+                setTimeout(() => {
+                        shareBlur.classList.remove("active");
+                        shareBlur.style.opacity = "";
+                        shareBlur.querySelector(".share-box").style.transform = "";
+                }, 300); // must match CSS transition time
+        }
+
+        // Close modal on cancel button
+        cancelBtn.addEventListener("click", closeModal);
+
+        // Close modal if clicking outside share-box
+        shareBlur.addEventListener("click", (e) => {
+                if (e.target === shareBlur) {
+                        closeModal();
+                }
+        });
 });
 
 // QR code generator
