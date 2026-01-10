@@ -172,9 +172,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // QR code generator
-new QRCode(document.getElementById("qrcode"), {
-        text: "https://irobbott.github.io",  // put your link or text here
-        width: 200,
-        height: 200,
-        correctLevel: QRCode.CorrectLevel.H // high error correction
-});
+// new QRCode(document.getElementById("qrcode"), {
+//         text: "https://irobbott.github.io",  // put your link or text here
+//         width: 200,
+//         height: 200,
+//         correctLevel: QRCode.CorrectLevel.H // high error correction
+// });
+
+// Disable right click
+if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fullLockdown);
+} else {
+        fullLockdown();
+}
+
+function fullLockdown() {
+        document.querySelectorAll('.noRC').forEach(el => {
+                // Disable right-click
+                el.addEventListener('contextmenu', e => e.preventDefault());
+
+                // Disable dragging of elements (images, etc.)
+                el.addEventListener('dragstart', e => e.preventDefault());
+
+                // Optional: block click+drag text selection
+                el.addEventListener('mousedown', e => {
+                        e.preventDefault();
+                });
+
+                // Disable text selection via CSS
+                el.style.userSelect = 'none';
+                el.style.webkitUserSelect = 'none';
+                el.style.msUserSelect = 'none';
+
+                // Disable image dragging in WebKit browsers
+                el.style.webkitUserDrag = 'none';
+        });
+}
